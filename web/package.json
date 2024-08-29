@@ -54,7 +54,7 @@
     "@vitejs/plugin-react": "^4.2.1",
     "prettier": "^3.0.0",
     "typescript": "4.4.2",
-    "vite": "^5.2.0"
+    "vite": "^5.2.6"
   },
   "prettier": {
     "singleQuote": true,
