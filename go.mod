@@ -27,7 +27,7 @@ require (
 	github.com/stripe/stripe-go/v76 v76.21.0
 	golang.org/x/crypto v0.21.0
 	golang.org/x/image v0.18.0
-	golang.org/x/net v0.22.0
+	golang.org/x/net v0.23.0
 	gorm.io/driver/mysql v1.4.3
 	gorm.io/driver/postgres v1.5.2
 	gorm.io/driver/sqlite v1.4.3
