@@ -1,16 +1,16 @@
-FROM node:16 as builder
+FROM node:16-alpine as builder
 
 WORKDIR /build
 COPY web/package.json .
-RUN npm install
+RUN npm install --production
 COPY ./web .
 COPY ./VERSION .
 RUN DISABLE_ESLINT_PLUGIN='true' VITE_REACT_APP_VERSION=$(cat VERSION) npm run build
 
-FROM golang AS builder2
+FROM golang:alpine AS builder2
 
 ENV GO111MODULE=on \
-    CGO_ENABLED=1 \
+    CGO_ENABLED=0 \
     GOOS=linux
 
 WORKDIR /build
