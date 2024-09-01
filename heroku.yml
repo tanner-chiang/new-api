@@ -1,5 +1,7 @@
 build:
   docker:
     web: Dockerfile
+config:
+  ENV: production
 run:
   web: /one-api
