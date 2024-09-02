@@ -1,9 +1,11 @@
 setup:
-  addons:
-    - plan: heroku-postgresql:hobby-dev
-      as: DATABASE
+ addons:
+    - plan: schematogo:test
+      as: DATABASE # PostgreSQL database
+    - plan: cachetogo:test
+      as: REDIS     # Redis add-on
 build:
-  docker:
+ docker:
     web: Dockerfile
 run:
-  web: /one-api
+ web: /one-api
