@@ -129,6 +129,9 @@ var RelayTimeout = GetEnvOrDefault("RELAY_TIMEOUT", 0) // unit is second
 
 var GeminiSafetySetting = GetEnvOrDefaultString("GEMINI_SAFETY_SETTING", "BLOCK_NONE")
 
+// https://docs.cohere.com/docs/safety-modes Type; NONE/CONTEXTUAL/STRICT
+var CohereSafetySetting = GetEnvOrDefaultString("COHERE_SAFETY_SETTING", "NONE")
+
 const (
 	RequestIdKey = "X-Oneapi-Request-Id"
 )
@@ -237,6 +240,7 @@ const (
 	ChannelTypeJina           = 38
 	ChannelCloudflare         = 39
 	ChannelTypeSiliconFlow    = 40
+	ChannelTypeVertexAi       = 41
 
 	ChannelTypeDummy // this one is only for count, do not add any channel after this
 
@@ -284,4 +288,5 @@ var ChannelBaseURLs = []string{
 	"https://api.jina.ai",                       //38
 	"https://api.cloudflare.com",                //39
 	"https://api.siliconflow.cn",                //40
+	"",                                          //41
 }
