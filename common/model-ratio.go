@@ -85,6 +85,7 @@ var defaultModelRatio = map[string]float64{
 	"claude-2.1":                     4,     // $8 / 1M tokens
 	"claude-3-haiku-20240307":        0.125, // $0.25 / 1M tokens
 	"claude-3-5-sonnet-20240620":     1.5,   // $3 / 1M tokens
+	"claude-3-5-sonnet-20241022":     1.5,   // $3 / 1M tokens
 	"claude-3-sonnet-20240229":       1.5,   // $3 / 1M tokens
 	"claude-3-opus-20240229":         7.5,   // $15 / 1M tokens
 	"ERNIE-4.0-8K":                   0.120 * RMB,
@@ -350,13 +351,14 @@ func GetCompletionRatio(name string) float64 {
 		return 4.0 / 3.0
 	}
 	if strings.HasPrefix(name, "gpt-4") && name != "gpt-4-all" && name != "gpt-4-gizmo-*" {
-		if strings.HasPrefix(name, "gpt-4o-mini") || "gpt-4o-2024-08-06" == name {
+		if strings.HasSuffix(name, "preview") || strings.HasPrefix(name, "gpt-4-turbo") || "gpt-4o-2024-05-13" == name {
+			return 3
+		}
+
+		if strings.HasPrefix(name, "gpt-4o") {
 			return 4
 		}
 
-		if strings.HasSuffix(name, "preview") || strings.HasPrefix(name, "gpt-4-turbo") || strings.HasPrefix(name, "gpt-4o") {
-			return 3
-		}
 		return 2
 	}
 	if "o1" == name || strings.HasPrefix(name, "o1-") {
@@ -376,7 +378,7 @@ func GetCompletionRatio(name string) float64 {
 		return 3
 	}
 	if strings.HasPrefix(name, "gemini-") {
-		return 3
+		return 4
 	}
 	if strings.HasPrefix(name, "command") {
 		switch name {
